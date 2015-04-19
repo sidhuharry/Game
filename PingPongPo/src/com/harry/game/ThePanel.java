@@ -75,9 +75,9 @@ public class ThePanel extends JPanel {
 		ball.setY(458);
 		ball.setSpeedX(2);
 		ball.setSpeedY(3);
-		box.setX(300);
-		box.setY(540);
-		box.setSpeed(2);
+		box.setX(10);
+		box.setY(10);
+		box.setSpeedX(2);
 	}
 
 	public void paintComponent(Graphics g) {
