@@ -10,6 +10,7 @@ public class Box extends Stripe {
 	static final int WIDTH=100;
 	private int speedX; //speed of moving the box to right or left
 	private int speedY; //speed of moving up or down
+	private char axis;//used to check along which axis box is moving.
 	
 	public Box(){}
 	
@@ -57,5 +58,19 @@ public class Box extends Stripe {
 			return true;
 		}
 		return containPoint;
+	}
+
+	/**
+	 * @return the axis
+	 */
+	public char getAxis() {
+		return axis;
+	}
+
+	/**
+	 * @param axis the axis to set
+	 */
+	public void setAxis(char axis) {
+		this.axis = axis;
 	}
 }

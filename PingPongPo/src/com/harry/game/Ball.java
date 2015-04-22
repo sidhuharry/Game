@@ -2,7 +2,6 @@ package com.harry.game;
 
 import java.awt.Graphics;
 import java.awt.geom.Ellipse2D;
-import java.awt.geom.Ellipse2D.Float;
 
 //overrides Stripe
 public class Ball extends Stripe {
@@ -84,9 +83,14 @@ public class Ball extends Stripe {
 		// speedY = -speedY;
 		// }
 
-		Ellipse2D circle = new Ellipse2D.Float(getX(), getY(), 2 * RADIUS, 2 * RADIUS);
-		if (circle.intersects(box.getX(), box.getY(), Box.WIDTH, Box.WIDTH)) {
-			speedY = -speedY;
+		Ellipse2D ballCircle = new Ellipse2D.Float(getX(), getY(), 2 * RADIUS, 2 * RADIUS);
+		if (ballCircle.intersects(box.getX(), box.getY(), Box.WIDTH, Box.HEIGHT) ) {
+			if(box.getAxis()=='X') {
+				speedY = -speedY;
+			}
+			else if(box.getAxis()=='Y') {
+				speedX = -speedX;
+			}
 		}
 	}
 }
