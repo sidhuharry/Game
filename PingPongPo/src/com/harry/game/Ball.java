@@ -44,20 +44,7 @@ public class Ball extends Stripe {
 		/*
 		 * There are main 2 things with which my ball can collide 1. The
 		 * muthafucking box 2. The muthafucking container
-		 * 
-		 * To handle box-- It could be done like this for Ball@(x,y) and
-		 * box@(Bx, By) --> this is really hard to explain.. --> one method is
-		 * you check whether your oval contains that point or not --> other
-		 * method is really long and i have solved it on the paper.
-		 * 
-		 * To handle Container-- It could be done like this for Ball @(x, y)
-		 * -->(x-r > 0 ) and (y-r > 0) and (x+r < BOXWIDTH) and (y+r <
-		 * BOXHEIGHT)
 		 */
-
-		// ----->check for container<--------
-
-		// Check for X
 
 		if (getX() < 0) {
 			speedX = -speedX;
