@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,7 +16,7 @@ import javax.swing.JPanel;
 public class ThePanel extends JPanel {
 
 	private static Ball ball = new Ball();
-	private static Box box = new Box();
+	private static Box box[] = new Box[2];
 	static final int P_HEIGHT = 600;
 	static final int P_WIDTH = 600;
 
@@ -50,10 +51,10 @@ public class ThePanel extends JPanel {
 					@Override
 					public void keyPressed(KeyEvent e) {
 						if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-							box.moveLeft();
+							box[1].moveLeft();
 						}
 						if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-							box.moveRight();
+							box[1].moveRight();
 						}
 					}
 				});
@@ -71,20 +72,32 @@ public class ThePanel extends JPanel {
 
 	public static void setStripes() {
 		// set The stripes
-		ball.setX(458);
-		ball.setY(458);
+		ball.setX(getRandomNumber());
+		ball.setY(getRandomNumber());
 		ball.setSpeedX(2);
 		ball.setSpeedY(3);
-		box.setX(10);
-		box.setY(10);
-		box.setSpeedX(2);
+		for(int i = 0; i < box.length; i++ ) {
+			box[i] = new Box();
+		}
+		
+		box[0].setX(ThePanel.P_WIDTH/2);
+		box[0].setY(10);
+		box[0].setSpeedX(2);
+		box[0].setAxis('X');
+		
+		box[1].setX(ThePanel.P_WIDTH/2);
+		box[1].setY(575);
+		box[1].setSpeedX(2);
+		box[1].setAxis('X');
 	}
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.setColor(Color.BLUE);
 		// draw the box
-		box.draw(g, box.getX(), box.getY());
+		for(int i = 0; i<box.length; i++ ) {
+			box[i].draw(g, box[i].getX(), box[i].getY());
+		}
 		// draw the ball
 		ball.draw(g, ball.getX(), ball.getY());
 	}
@@ -93,7 +106,8 @@ public class ThePanel extends JPanel {
 		Thread gameThread = new Thread() {
 			public void run() {
 				while (true) {
-					ball.move(box);
+					//ball.move(box);
+					
 					repaint();
 					try {
 						Thread.sleep(1000/30);
@@ -104,6 +118,17 @@ public class ThePanel extends JPanel {
 			}
 		};
 		gameThread.start();
+	}
+	
+	public static int getRandomNumber() {
+		Random ran = new Random();
+		int min = 100;
+		int max = 400;
+		int rand;
+		
+		rand = ran.nextInt((max-min)) + min;
+		return rand;
+		
 	}
 
 }

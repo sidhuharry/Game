@@ -6,7 +6,7 @@ import java.io.Serializable;
 public class Player implements Serializable {
 	
 	private String name;
-	private int score;
+	private int score = 0 ; //initial score
 	private Box box;
 	/**
 	 * @return the name
@@ -49,6 +49,4 @@ public class Player implements Serializable {
 		score++;
 	}
 	
-	
-
 }

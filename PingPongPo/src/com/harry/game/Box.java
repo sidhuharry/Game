@@ -71,6 +71,9 @@ public class Box extends Stripe {
 	 * @param axis the axis to set
 	 */
 	public void setAxis(char axis) {
-		this.axis = axis;
+		if(axis == 'X' || axis == 'Y')
+			this.axis = axis;
+		else
+			System.out.println("Wrong axis value");
 	}
 }

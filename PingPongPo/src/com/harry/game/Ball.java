@@ -8,7 +8,7 @@ public class Ball extends Stripe {
 	public Ball() {
 	}
 
-	private static final int RADIUS = 15;
+	public static final int RADIUS = 15;
 	private static float speedX;
 	private static float speedY;
 
