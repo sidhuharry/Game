@@ -17,6 +17,7 @@ public class ThePanel extends JPanel {
 
 	private static Ball ball = new Ball();
 	private static Box box[] = new Box[2];
+	private static Player player[] = new Player[2];
 	static final int P_HEIGHT = 600;
 	static final int P_WIDTH = 600;
 
@@ -29,7 +30,7 @@ public class ThePanel extends JPanel {
 
 			public void run() {
 				ThePanel panel = new ThePanel();
-				setStripes();
+				resetGame();
 				// set the frame
 				JFrame frame = new JFrame();
 				frame.setBackground(Color.BLACK);
@@ -51,9 +52,11 @@ public class ThePanel extends JPanel {
 					@Override
 					public void keyPressed(KeyEvent e) {
 						if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+							box[0].moveLeft();
 							box[1].moveLeft();
 						}
 						if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+							box[0].moveRight();
 							box[1].moveRight();
 						}
 					}
@@ -70,15 +73,19 @@ public class ThePanel extends JPanel {
 		});
 	}
 
-	public static void setStripes() {
+	public static void resetGame() {
 		// set The stripes
 		ball.setX(getRandomNumber());
 		ball.setY(getRandomNumber());
 		ball.setSpeedX(2);
 		ball.setSpeedY(3);
-		for(int i = 0; i < box.length; i++ ) {
+		
+		for(int i = 0; i < player.length; i++ ) {
+			player[i] = new Player();
 			box[i] = new Box();
+			player[i].setBox(box[i]);
 		}
+		
 		
 		box[0].setX(ThePanel.P_WIDTH/2);
 		box[0].setY(10);

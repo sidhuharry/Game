@@ -34,17 +34,19 @@ public class Ball extends Stripe {
 		System.out.println("X : " + x);
 		System.out.println("Y : " + y);
 	}
-
+	
+	//---moved to PhysicStuff class
+/*
 	void move(Box box) {
 
 		// check for the collision and move the ball
 		setX((int) (getX() + speedX));
 		setY((int) (getY() + speedY));
 
-		/*
+		
 		 * There are main 2 things with which my ball can collide 1. The
 		 * muthafucking box 2. The muthafucking container
-		 */
+		 
 
 		if (getX() < 0) {
 			speedX = -speedX;
@@ -79,5 +81,5 @@ public class Ball extends Stripe {
 				speedX = -speedX;
 			}
 		}
-	}
+	}*/
 }

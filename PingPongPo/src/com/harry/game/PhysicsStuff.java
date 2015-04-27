@@ -15,7 +15,7 @@ public class PhysicsStuff {
 	 * @param ball
 	 * @param box
 	 */
-	public boolean collisionDangerZone(Ball ball, Box[] box) {
+	public boolean collisionDangerZone(Ball ball, Player[] player) {
 
 		boolean collision = false;
 		/*
@@ -24,6 +24,7 @@ public class PhysicsStuff {
 		 */
 
 		if (ball.getX() < 0) {
+			//if(player[i].getBox())
 	
 		} else if ((ball.getX() + (2 * Ball.RADIUS)) > ThePanel.P_WIDTH) {
 			//speedX = -speedX;
@@ -45,13 +46,13 @@ public class PhysicsStuff {
 		 */
 		Ellipse2D ballCircle = new Ellipse2D.Float(ball.getX(), ball.getY(), 2 * Ball.RADIUS, 2 * Ball.RADIUS);
 		
-		for (int i = 0; i < box.length; i++) {
-			if (ballCircle.intersects(box[i].getX(), box[i].getY(), Box.WIDTH, Box.HEIGHT)) {
-				if (box[i].getAxis() == 'X') {
+		for (int i = 0; i < player.length; i++) {
+			if (ballCircle.intersects(player[i].getBox().getX(), player[i].getBox().getY(), Box.WIDTH, Box.HEIGHT)) {
+				if (player[i].getBox().getAxis() == 'X') {
 
 					ball.setSpeedY((int) -ball.getSpeedY()); //reverse the speed
 
-				} else if (box[i].getAxis() == 'Y') {
+				} else if (player[i].getBox().getAxis() == 'Y') {
 
 					ball.setSpeedX((int) -ball.getSpeedX()); //reverse the speed
 
