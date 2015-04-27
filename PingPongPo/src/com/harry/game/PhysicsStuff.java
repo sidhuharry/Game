@@ -15,51 +15,65 @@ public class PhysicsStuff {
 	 * @param ball
 	 * @param box
 	 */
-	public boolean collisionDangerZone(Ball ball, Player[] player) {
+	public boolean checkCollision(Ball ball, Player[] player) {
 
 		boolean collision = false;
+		Ellipse2D ballCircle = new Ellipse2D.Float(ball.getX(), ball.getY(), 2 * Ball.RADIUS, 2 * Ball.RADIUS);
 		/*
 		 * There are main 2 things with which my ball can collide 1. The
 		 * muthafucking box 2. The muthafucking container
 		 */
+		// -- this here, is a check for upper surface of panel my man.
+		if (ballCircle.intersects(0, 0, ThePanel.P_WIDTH, 0.001)) {
+			for (int i = 0; i < player.length; i++) {
+				Box b = player[i].getBox();
+				if (b.getY() <= 20) {
+					ball.setY(b.getY()+Box.HEIGHT);
+					player[i].decreaseScore();
+					ThePanel.resetGame();
+				}
+			}
+			// -- and this here, is a check for lower surface of panel
+		} else if (ballCircle.intersects(0, ThePanel.P_HEIGHT, ThePanel.P_WIDTH, 0.001)) {
 
-		if (ball.getX() < 0) {
-			//if(player[i].getBox())
-	
-		} else if ((ball.getX() + (2 * Ball.RADIUS)) > ThePanel.P_WIDTH) {
-			//speedX = -speedX;
-			ball.setX(ThePanel.P_WIDTH - (2 * Ball.RADIUS));
+			for (int i = 0; i < player.length; i++) {
+				Box b = player[i].getBox();
+				if (b.getY() >= 40) {
+					ball.setY(b.getY());
+					player[i].decreaseScore();
+					ThePanel.resetGame();
+				}
+			}
 		}
 
-		// check for Y
-		if ((ball.getY()) < 0) {
-			//speedY = -speedY;
-			//setY(0);
-		} else if ((ball.getY() + (2 * Ball.RADIUS)) > ThePanel.P_HEIGHT) {
-			System.out.println("Inverting Y line no 77");
-			//speedY = -speedY;
-			ball.setY(ThePanel.P_HEIGHT - (2 * Ball.RADIUS));
+		// collision with left surface of the panel
+		if (ballCircle.intersects(0.0, 0.0, 0.001, ThePanel.P_HEIGHT)) {
+			ball.setX(0); //
+			ball.setSpeedX((int) -ball.getSpeedX());
+		} else if (ballCircle.intersects(ThePanel.P_WIDTH, 0.0, 0.001, ThePanel.P_HEIGHT)) {
+			ball.setX(ThePanel.P_WIDTH - 2 * Ball.RADIUS);
+			ball.setSpeedX((int) -ball.getSpeedX());
 		}
 
 		/*
 		 * Collision checking with box and ball
 		 */
-		Ellipse2D ballCircle = new Ellipse2D.Float(ball.getX(), ball.getY(), 2 * Ball.RADIUS, 2 * Ball.RADIUS);
-		
+
 		for (int i = 0; i < player.length; i++) {
 			if (ballCircle.intersects(player[i].getBox().getX(), player[i].getBox().getY(), Box.WIDTH, Box.HEIGHT)) {
 				if (player[i].getBox().getAxis() == 'X') {
 
-					ball.setSpeedY((int) -ball.getSpeedY()); //reverse the speed
+					ball.setSpeedY((int) -ball.getSpeedY()); // reverse the
+																// speed
 
 				} else if (player[i].getBox().getAxis() == 'Y') {
 
-					ball.setSpeedX((int) -ball.getSpeedX()); //reverse the speed
+					ball.setSpeedX((int) -ball.getSpeedX()); // reverse the
+																// speed
 
 				}
 			}
 		}
 		return collision;
 	}
-
 }

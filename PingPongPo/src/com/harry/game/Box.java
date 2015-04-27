@@ -1,7 +1,6 @@
 package com.harry.game;
 
 import java.awt.Graphics;
-import java.awt.Rectangle;
 
 
 public class Box extends Stripe {
@@ -48,16 +47,6 @@ public class Box extends Stripe {
 	}
 	void moveDown() {
 		setY(getY() + getSpeedY());
-	}
-	
-	
-	boolean contains(int x, int y) {
-		boolean containPoint = false;
-		Rectangle rect = new Rectangle(getX(), getY(), WIDTH, HEIGHT); // create one rectanle with same height and width to check that if the 
-		if(rect.contains(x, y)) {
-			return true;
-		}
-		return containPoint;
 	}
 
 	/**
