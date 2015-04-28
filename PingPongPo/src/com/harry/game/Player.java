@@ -49,7 +49,10 @@ public class Player implements Serializable {
 	}
 
 	public void decreaseScore() {
-		score--;
+		if(score > 0 )
+			score--;
+		else
+			System.out.println("Score range voilated");
 		System.out.println("Score: "+ score);
 	}
 

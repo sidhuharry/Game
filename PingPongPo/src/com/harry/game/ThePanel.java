@@ -26,7 +26,7 @@ public class ThePanel extends JPanel {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void startGame() {
 
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 
