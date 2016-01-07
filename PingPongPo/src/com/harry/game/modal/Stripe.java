@@ -1,4 +1,4 @@
-package com.harry.game;
+package com.harry.game.modal;
 import java.awt.Graphics;
 
 

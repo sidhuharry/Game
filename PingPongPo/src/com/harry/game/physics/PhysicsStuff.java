@@ -2,9 +2,14 @@
  * Detects collision and give response to it.
  */
 
-package com.harry.game;
+package com.harry.game.physics;
 
 import java.awt.geom.Ellipse2D;
+
+import com.harry.game.modal.Ball;
+import com.harry.game.modal.Box;
+import com.harry.game.modal.Player;
+import com.harry.game.modal.ThePanel;
 
 public class PhysicsStuff {
 

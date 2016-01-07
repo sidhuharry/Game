@@ -1,12 +1,12 @@
-package com.harry.game;
+package com.harry.game.modal;
 
 import java.awt.Graphics;
 
 
 public class Box extends Stripe {
 	
-	static final int HEIGHT=15;
-	static final int WIDTH=100;
+	public static final int HEIGHT=15;
+	public static final int WIDTH=100;
 	private int speedX; //speed of moving the box to right or left
 	private int speedY; //speed of moving up or down
 	private char axis;//used to check along which axis box is moving.

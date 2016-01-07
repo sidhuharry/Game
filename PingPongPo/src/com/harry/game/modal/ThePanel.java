@@ -1,6 +1,6 @@
 //Contains the main method and used to run the game.
 
-package com.harry.game;
+package com.harry.game.modal;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -14,14 +14,16 @@ import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import com.harry.game.physics.PhysicsStuff;
+
 @SuppressWarnings("serial")
 public class ThePanel extends JPanel {
 
 	private static Ball ball = new Ball();
 	private static Box box[] = new Box[2];
 	private static Player player[] = new Player[2];
-	static final int P_HEIGHT = 600;
-	static final int P_WIDTH = 600;
+	public final static int P_HEIGHT = 600;
+	public static final int P_WIDTH = 600;
 
 	/**
 	 * @param args
@@ -103,7 +105,7 @@ public class ThePanel extends JPanel {
 		ball.setX(getRandomNumber());
 		ball.setY(getRandomNumber());
 		ball.setSpeedX(2);
-		ball.setSpeedY(3);
+		ball.setSpeedY(3); 
 		
 		box[0].setX((ThePanel.P_WIDTH / 2)-50);
 		box[0].setY(10);

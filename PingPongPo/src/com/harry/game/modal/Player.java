@@ -1,4 +1,4 @@
-package com.harry.game;
+package com.harry.game.modal;
 
 import java.io.Serializable;
 
@@ -6,7 +6,7 @@ import java.io.Serializable;
 public class Player implements Serializable {
 
 	private String name;
-	private int score = 15; // initial score
+	private int score;
 	private Box box;
 
 	/**
