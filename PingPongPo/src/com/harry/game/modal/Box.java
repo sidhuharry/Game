@@ -30,22 +30,22 @@ public class Box extends Stripe {
 	}
 
 	@Override
-	void draw(Graphics g, int x, int y) {
+	public void draw(Graphics g, int x, int y) {
 		g.fill3DRect(x, y, Box.WIDTH, Box.HEIGHT, true);
 	}
 	
 	//Detect bounds and move into the container in a straight line
-	void moveRight() {
+	public void moveRight() {
 		setX(getX() + getSpeedX());
 	}
-	void moveLeft() {
+	public void moveLeft() {
 		setX(getX() - getSpeedX());
 	}
 	
-	void moveUp() {
+	public void moveUp() {
 		setY(getY() - getSpeedY());
 	}
-	void moveDown() {
+	public void moveDown() {
 		setY(getY() + getSpeedY());
 	}
 

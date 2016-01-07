@@ -1,5 +1,6 @@
 package com.harry.game.network;
 
+import java.io.IOException;
 import java.net.ServerSocket;
 
 
@@ -8,8 +9,17 @@ import java.net.ServerSocket;
  * @author Harvinder Singh Sidhu
  */
 public class GameServer {
-	private ServerSocket server;
+	private ServerSocket serverListener = null;
 	private static int PORT = 8901;
 	
+	public ServerSocket startServer() {
+		try {
+			serverListener = new ServerSocket(PORT);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return serverListener;
+	}
 
 }

@@ -28,13 +28,13 @@ public class Ball extends Stripe {
 	}
 
 	@Override
-	void draw(Graphics g, int x, int y) {
+	public void draw(Graphics g, int x, int y) {
 		g.fillOval(x, y, 2 * RADIUS, 2 * RADIUS);
 		System.out.println("X : " + x);
 		System.out.println("Y : " + y);
 	}
 	
-	void move() {
+	public void move() {
 		setX((int) (getX() + speedX));
 		setY((int) (getY() + speedY));
 	}
